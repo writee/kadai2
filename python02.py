@@ -82,13 +82,13 @@ def main():
         exp_money_list = []
         money_list = driver.find_elements_by_class_name("tableCondition__body")
 
-        for name,money in zip(name_list,money_list):
+        for i,(name,money) in enumerate(zip(name_list,money_list)):
 
             exp_name_list.append(name.text)
             exp_money_list.append(money.text)
 
             with open('logfile.csv','a',encoding='utf-8') as f:
-                f.write(str(1+exp_name_list.index(name)))
+                f.write('\n'+str(i))
 
             #CSVファイルに出力
             df = pd.DataFrame([exp_name_list,exp_money_list])
